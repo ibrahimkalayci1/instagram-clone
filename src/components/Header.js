@@ -3,6 +3,7 @@ import Search from "components/Search"
 import { logout } from "firebase.js"
 import  Icon  from 'components/Icon';
 import { useSelector } from "react-redux";
+import classNames from "classnames";
 
 
 export default function Header() {
@@ -24,12 +25,12 @@ export default function Header() {
 
     <nav className=" flex items-center gap-x-5" >
         
-        <NavLink  to="/" >
-            <Icon name="home" size={24} />
+    <NavLink  to="/" >
+        {({ isActive }) =>   <Icon name={isActive ? "home-filled" : "home" }  size={24} />}
         </NavLink>
 
         <NavLink  to="/inbox" >
-            <Icon name="direct" size={24}/>
+        {({ isActive }) =>  <Icon name={isActive ? "direct-filled" : "direct" }  size={24} />}
         </NavLink>
 
         <NavLink  to="/" >
@@ -45,9 +46,12 @@ export default function Header() {
         </NavLink>
         
         <NavLink to={`/${user.username}`}>
-    <img  src="/no-avatar.jpeg" className="w-6 h-6 rounded-full"  />         
-        </NavLink>
-    </nav>
+   {({isActive})  => <img  src="/no-avatar.jpeg"   className={classNames({           
+     "w-6 h-6 rounded-full": true,
+     "ring-1 ring-offset-1 ring-black": isActive
+   })} />}
+    </NavLink>
+     </nav>
 
     </div>
        

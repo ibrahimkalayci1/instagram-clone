@@ -23,7 +23,6 @@ const [open,setOpen] = useState(false)
     })} >
       <AiFillCloseCircle  />
     </button>
-    {open ? "açık" : "kapalı"}
     </div>
   )
 }

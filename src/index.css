@@ -19,3 +19,9 @@
 }
 
 }
+
+@layer components {
+    .messages-box >div {
+@apply flex flex-col  gap-y-2
+    }
+}
